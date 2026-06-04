@@ -7,3 +7,18 @@
     --text-main:#0F172A;
     --text-secondary:#64748B;
 }
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+}
+
+li{
+    list-style: none;
+}
+
+button{
+    border: none;
+}
