@@ -1,0 +1,26 @@
+body{
+    background-color: var(--bg-color);
+}
+
+header{
+    width: 100%;
+    text-align: center;
+    padding: 0.5rem 0.2rem;
+    box-shadow: 0 0 20px rgba(225, 225, 225,0.9);
+}
+
+.siteName{
+    font-size: 1.2rem;
+    font-weight: 600;
+}
+
+.siteName span{
+    display:inline-flex;
+    align-items: center;
+    justify-content: center;
+    background-color: var(--color-primary);
+    color: #ffff;
+    width: 10%;
+    aspect-ratio: 1;
+    border-radius: 8px;
+}
