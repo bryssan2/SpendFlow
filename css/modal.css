@@ -1,0 +1,112 @@
+main{
+   width: 100%;
+   height: 100vh;
+}
+
+main.load{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.accueil_card{
+    width:min(90%,600px);
+    height:fit-content;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+    border-radius: 8px;
+    background-color: #ffff;
+}
+
+.content{
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    justify-content: center;
+    padding: 3rem 1rem;
+    gap: 1.5rem;
+}
+
+.heading{
+    width: 100%;
+    text-align: center;
+}
+
+.heading h1{
+    color: var(--text-main);
+}
+
+.heading h2{
+    color: var(--text-secondary);
+    font-size: 1.2rem;
+}
+
+.inputBoxes{
+    display: flex;
+    gap: 5px;
+}
+
+.inputBox{
+    position: relative;
+    height: 34px;
+    width:clamp(2rem,8rem,10rem);
+}
+
+input{
+    position: relative;
+    width: 100%;
+    height:100%;
+    border-radius: 5px;
+    padding: 10px;
+    outline: none;
+    font-size: 0.75rem;
+    color: var(--text-main);
+    border: 1px solid #6b6b6b;
+}
+
+
+input:focus{
+   border: 2px solid var(--color-primary);
+}
+
+
+label{
+    position: absolute;
+    left: 10px;
+    top: 50%;
+     font-size: 0.9rem;
+     background-color: #ffff;
+     pointer-events: none;
+     color: #6b6b6b;
+    transform: translateY(-50%);
+    transition: all ease 0.3s;
+}
+
+input:focus ~ label{
+    top: 0;
+    font-size: 0.75rem;
+    color: var(--color-primary);
+}
+
+.accueil_save_btn{
+    color: #ffff;
+    background-color:var(--color-primary);
+    border-radius: 8px;
+    padding: 0.6rem 2rem;
+    font-weight: 600;
+    font-size: 1rem;
+    box-shadow: -3px 4px 1px rgba(99, 102, 241, 0.3);
+    cursor: pointer;
+    transition: all ease 300ms;
+}
+
+.accueil_save_btn:hover{
+  background-color: var(--color-secondary);
+  transform:scale(1.01);
+}
+
+.accueil_save_btn:active{
+    transform: scale(0.9);
+    box-shadow: none;
+}
