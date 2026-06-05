@@ -14,4 +14,5 @@ export function modalNameBudget () {
                 <button class="accueil_save_btn" id='accueilSaveBtn'>Enrégistrer</button>
             </div>
         </div>`   
+        return true
 }
