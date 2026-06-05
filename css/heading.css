@@ -3,15 +3,17 @@ body{
 }
 
 header{
+    position: sticky;
     width: 100%;
     text-align: center;
-    padding: 0.5rem 0.2rem;
-    box-shadow: 0 0 20px rgba(225, 225, 225,0.9);
+    padding: 1rem 0.2rem;
+    box-shadow: 0 0 20px rgba(79, 70, 229,0.5); 
 }
 
 .siteName{
-    font-size: 1.2rem;
+    font-size:clamp(1.2rem,1.5rem,2rem);
     font-weight: 600;
+    color: var(--text-main);
 }
 
 .siteName span{
@@ -20,7 +22,7 @@ header{
     justify-content: center;
     background-color: var(--color-primary);
     color: #ffff;
-    width: 10%;
+    width: clamp(1.2rem,1.7rem,2rem);
     aspect-ratio: 1;
-    border-radius: 8px;
+    border-radius: 4px;
 }
