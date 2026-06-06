@@ -4,5 +4,6 @@ export function saveInLocalStorage (a,b){
         budget : b
      }
      localStorage.setItem('userData',JSON.stringify(data))
+     
 }
 
