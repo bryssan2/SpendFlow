@@ -6,11 +6,11 @@
 
 .greetingSection h1{
     color: var(--text-main);
-    font-size: clamp(1rem,2.5rem,4rem);
+    font-size: clamp(1rem,2.2rem,4rem);
 }
 
 .greetingSection h2{
     text-align: left;
     color: var(--text-secondary);
-    font-size: 1.5rem;
+    font-size: 1.2rem;
 }

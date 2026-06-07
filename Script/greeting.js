@@ -4,7 +4,7 @@ export function greeting (nom,conteneur){
       <h1>
         Hello ${nom} !</h1>
      <h2>
-        Voici le résumé de vos dépenses du mois
+        Voici le résumé de tes dépenses du mois
      </h2>
 </div>`
 }

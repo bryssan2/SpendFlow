@@ -4,6 +4,7 @@ import {validAccueilData} from './validation.js'
 import {popUp} from './Popup.js'
 import {saveInLocalStorage} from './localStorage.js'
 import {greeting } from './greeting.js'
+import { renderCard } from './renderCards.js';
 
 
 
@@ -33,6 +34,7 @@ import {greeting } from './greeting.js'
             mainContent.classList.remove('load')
             mainContent.innerHTML = ''
             greeting(userData[0].name,mainContent)
+            renderCard(mainContent,userData[0].budget)
        }
 
     })
@@ -45,6 +47,7 @@ import {greeting } from './greeting.js'
        userData[0].budget = objData.budget
        mainContent.innerHTML = '';
        greeting(userData[0].name,mainContent);
+       renderCard(mainContent,userData[0].budget)
        }
     }
 
