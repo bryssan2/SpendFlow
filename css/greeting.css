@@ -1,0 +1,16 @@
+.greetingSection{
+    margin: clamp(1rem,1.5rem,3rem);
+    margin-bottom: 30px;
+}
+
+
+.greetingSection h1{
+    color: var(--text-main);
+    font-size: clamp(1rem,2.5rem,4rem);
+}
+
+.greetingSection h2{
+    text-align: left;
+    color: var(--text-secondary);
+    font-size: 1.5rem;
+}

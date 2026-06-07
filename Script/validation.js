@@ -1,7 +1,7 @@
 
 export function validAccueilData (a,b){
     const regex = /^[a-zA-Zùéàçôêîùûè\-s]+$/
-   if ( !regex.test(a.value) || !a.value.trim()){
+   if ( !regex.test(a.value.trim()) || !a.value.trim()){
       return false
    }
   

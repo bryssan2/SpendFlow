@@ -15,6 +15,18 @@ main.load{
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
     border-radius: 8px;
     background-color: #ffff;
+    animation: FadeIn 0.3s ease-in;
+}
+
+@keyframes FadeIn {
+    0%{
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    100%{
+        opacity: 1;
+        transform: translateY(0px);
+    }
 }
 
 .content{

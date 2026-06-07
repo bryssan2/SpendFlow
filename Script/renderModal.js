@@ -1,5 +1,5 @@
-export function modalNameBudget () {
-  mainContent.innerHTML = 
+export function modalNameBudget (conteneur) {
+  conteneur.innerHTML = 
   `<div class="accueil_card">
             <div class="content">
                 <div class="heading">
