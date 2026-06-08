@@ -5,6 +5,7 @@ import {popUp} from './Popup.js'
 import {saveInLocalStorage} from './localStorage.js'
 import {greeting } from './greeting.js'
 import { renderCard } from './renderCards.js';
+import { addExpense } from './addExpenses.js';
 
 
 
@@ -35,6 +36,7 @@ import { renderCard } from './renderCards.js';
             mainContent.innerHTML = ''
             greeting(userData[0].name,mainContent)
             renderCard(mainContent,userData[0].budget)
+            addExpense(mainContent)
        }
 
     })
@@ -48,6 +50,7 @@ import { renderCard } from './renderCards.js';
        mainContent.innerHTML = '';
        greeting(userData[0].name,mainContent);
        renderCard(mainContent,userData[0].budget)
+       addExpense(mainContent)
        }
     }
 

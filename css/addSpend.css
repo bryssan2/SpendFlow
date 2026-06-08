@@ -1,0 +1,76 @@
+.expenseInputBoxes{
+    width: 100%;
+    height: fit-content;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.Content{
+   width:90vw;
+    padding: 15px;
+    background-color: var(--bg-cards);
+     border-radius: 6px;
+    border: 1px solid rgba(225, 255, 255, 0.2);
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+    margin-bottom: 30px;
+}
+
+.expenseInputBoxes h2{
+    margin-bottom: 15px;
+  color: var(--text-main);
+}
+
+.expenseInputBoxes .inputBoxes{
+    width: 100%;
+    height: fit-content;
+    display: flex;
+    align-items:start;
+    flex-direction: column;
+    gap: 20px;
+    }
+
+.expenseInputBoxes .inputBoxes .inputBox{
+    position: relative;
+    display: flex;
+    align-items:start;
+    gap: 3px;
+    flex-direction: column;
+    width: 100%;
+    max-width: 300px;
+    height: fit-content;
+    margin-bottom: 35px;
+}
+
+.inputBoxes .inputBox input,select{
+    position: absolute;
+    width: 100%;
+    height: 40px;
+    padding: 0 12px;
+    color: var(--text-secondary);
+    border:2px solid rgb(128, 128, 128,0.4);
+    box-shadow: 0 0 10px #ffff;
+    font-size: 0.9rem;
+    transition: all ease 0.3s;
+    border-radius: 5px;
+    outline: none;
+    
+}
+
+.inputBoxes .inputBox input:focus,select:focus{
+    border-color: var(--color-primary);
+}
+
+.inputBoxes .inputBox input::placeholder{
+    font-weight: 600;
+}
+
+@media screen and (min-width:768px) {
+    .Content{
+       width: 80vw;
+    }
+    .expenseInputBoxes .inputBoxes{
+        flex-direction: row;
+        flex-wrap: wrap;
+    }
+}
