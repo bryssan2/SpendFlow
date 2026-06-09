@@ -1,19 +1,20 @@
 .expenseInputBoxes{
-    width: 100%;
+    width: 90%;
     height: fit-content;
     display: flex;
     align-items: center;
     justify-content: center;
+    margin-bottom: 30px;
 }
 
+
 .Content{
-   width:90vw;
-    padding: 15px;
+   width:90%;
+    padding: 20px;
     background-color: var(--bg-cards);
      border-radius: 6px;
     border: 1px solid rgba(225, 255, 255, 0.2);
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
-    margin-bottom: 30px;
 }
 
 .expenseInputBoxes h2{
@@ -24,26 +25,19 @@
 .expenseInputBoxes .inputBoxes{
     width: 100%;
     height: fit-content;
-    display: flex;
-    align-items:start;
-    flex-direction: column;
-    gap: 20px;
-    }
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px,1fr));
+    grid-template-rows: auto;
+}
 
 .expenseInputBoxes .inputBoxes .inputBox{
-    position: relative;
-    display: flex;
-    align-items:start;
-    gap: 3px;
-    flex-direction: column;
     width: 100%;
     max-width: 300px;
     height: fit-content;
-    margin-bottom: 35px;
+   
 }
 
 .inputBoxes .inputBox input,select{
-    position: absolute;
     width: 100%;
     height: 40px;
     padding: 0 12px;
@@ -63,14 +57,4 @@
 
 .inputBoxes .inputBox input::placeholder{
     font-weight: 600;
-}
-
-@media screen and (min-width:768px) {
-    .Content{
-       width: 80vw;
-    }
-    .expenseInputBoxes .inputBoxes{
-        flex-direction: row;
-        flex-wrap: wrap;
-    }
 }
