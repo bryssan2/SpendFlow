@@ -9,7 +9,6 @@ import { addExpense } from './addExpenses.js';
 
 
 
-
   let mainContent = document.getElementById('mainContent')
     
     if(localStorage.length == 0){

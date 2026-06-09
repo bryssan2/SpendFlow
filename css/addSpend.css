@@ -15,11 +15,15 @@
      border-radius: 6px;
     border: 1px solid rgba(225, 255, 255, 0.2);
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+    gap: 20px;
 }
 
 .expenseInputBoxes h2{
-    margin-bottom: 15px;
   color: var(--text-main);
+  font-size: 1.2rem;
 }
 
 .expenseInputBoxes .inputBoxes{
@@ -57,4 +61,28 @@
 
 .inputBoxes .inputBox input::placeholder{
     font-weight: 600;
+}
+
+.addExpense-btn{
+  font-weight: 600;
+  color: #ffff;
+  background-color: var( --color-primary);
+  padding: 0.5rem 0.9rem;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 0.95rem;
+  transition: all ease 0.3s;
+  box-shadow: -3px 3px 3px rgb(99, 102, 241,0.5);
+}
+
+.addExpense-btn:hover{
+    background-color: var(--color-secondary);
+    transform: scale(1.01);
+    transform: translateX(2px);
+}
+
+.addExpense-btn:active{
+    transform: scale(0.95);
+    box-shadow: none;
 }
