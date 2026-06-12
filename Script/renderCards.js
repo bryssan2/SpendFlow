@@ -1,4 +1,4 @@
-export function renderCard (conteneur,budget,totaldépensé){
+export function renderCard (conteneur,totaldépensé,budget,restant){
    let cardsConteneur = document.createElement('div')
    cardsConteneur.className = "cardsConteneur"
    cardsConteneur.innerHTML = `
@@ -26,7 +26,7 @@ export function renderCard (conteneur,budget,totaldépensé){
                         <div class="card-label">
                            Reste disponible
                         </div>
-                        <div class="montant">${budget - totaldépensé} FCFA</div>
+                        <div class="montant">${restant} FCFA</div>
                     </div>
                 </div>
    `

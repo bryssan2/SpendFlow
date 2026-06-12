@@ -14,7 +14,6 @@ import { addExpense } from './addExpenses.js';
     if(localStorage.length == 0){
         mainContent.classList.add('load')
         modalNameBudget(mainContent)
-        
         let accueilSaveBtn = document.getElementById('accueilSaveBtn')
         let inputName = document.getElementById('inputName')
          let inputBudget = document.getElementById('inputBudget')
@@ -28,16 +27,16 @@ import { addExpense } from './addExpenses.js';
        } else{
             userData[0].name = inputName.value.trim()
             userData[0].budget = inputBudget.value.trim()
-            saveInLocalStorage(inputName.value.trim(),inputBudget.value.trim())
+            saveInLocalStorage(userData[0].name,userData[0].budget,userData[0].totalSpent,userData[0].remnant)
             inputName.value = ''
             inputBudget.value = ''
             mainContent.classList.remove('load')
             mainContent.innerHTML = ''
             greeting(userData[0].name,mainContent)
-            renderCard(mainContent,userData[0].budget)
+            renderCard(mainContent,userData[0].totalSpent,userData[0].budget,userData[0].remnant)
             addExpense(mainContent)
        }
-
+ 
     })
 
     }else if(localStorage.length > 0 ){
@@ -46,14 +45,16 @@ import { addExpense } from './addExpenses.js';
            const objData = JSON.parse(localStorageData);
        userData[0].name = objData.name
        userData[0].budget = objData.budget
+       userData[0].totalSpent = objData.totalSpent
+       userData[0].remnant =  objData.remnant
        mainContent.innerHTML = '';
        greeting(userData[0].name,mainContent);
-       renderCard(mainContent,userData[0].budget)
+       renderCard(mainContent,userData[0].totalSpent,userData[0].budget,userData[0].remnant)
        addExpense(mainContent)
        }
     }
 
-    
+    console.log(userData)
 
 
 
