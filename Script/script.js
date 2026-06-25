@@ -4,8 +4,8 @@ import {validAccueilData} from './validation.js'
 import {popUp} from './Popup.js'
 import {saveInLocalStorage} from './localStorage.js'
 import {greeting } from './greeting.js'
-import { renderCard } from './renderCards.js';
-import { addExpense } from './addExpenses.js';
+import { renderCard} from './renderCards.js';
+import { addExpense} from './addExpenses.js';
 
 
 
@@ -16,7 +16,7 @@ import { addExpense } from './addExpenses.js';
         modalNameBudget(mainContent)
         let accueilSaveBtn = document.getElementById('accueilSaveBtn')
         let inputName = document.getElementById('inputName')
-         let inputBudget = document.getElementById('inputBudget')
+        let inputBudget = document.getElementById('inputBudget')
    
 
     accueilSaveBtn.addEventListener('click', () => {
@@ -33,10 +33,17 @@ import { addExpense } from './addExpenses.js';
             mainContent.classList.remove('load')
             mainContent.innerHTML = ''
             greeting(userData[0].name,mainContent)
+            const localStorageData = localStorage.getItem('userData')
+       if(localStorageData){
+           const objData = JSON.parse(localStorageData);
+       userData[0].name = objData.name
+       userData[0].budget = objData.budget
+       userData[0].totalSpent = objData.totalSpent
+       userData[0].remnant =  objData.remnant
             renderCard(mainContent,userData[0].totalSpent,userData[0].budget,userData[0].remnant)
             addExpense(mainContent)
        }
- 
+       }
     })
 
     }else if(localStorage.length > 0 ){
@@ -53,8 +60,6 @@ import { addExpense } from './addExpenses.js';
        addExpense(mainContent)
        }
     }
-
-    console.log(userData)
 
 
 
