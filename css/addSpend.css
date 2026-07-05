@@ -1,5 +1,5 @@
 .expenseInputBoxes{
-    width: 90%;
+    width: 100%;
     height: fit-content;
     display: flex;
     align-items: center;
@@ -9,16 +9,17 @@
 
 
 .Content{
-   width:90%;
+    width:90%;
     padding: 20px;
     background-color: var(--bg-cards);
-     border-radius: 6px;
+    border-radius: 6px;
     border: 1px solid rgba(225, 255, 255, 0.2);
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
     display: flex;
     flex-direction: column;
-    align-items: start;
-    gap: 20px;
+    align-items: center;
+    justify-content: center;
+    gap: 30px;
 }
 
 .expenseInputBoxes h2{
@@ -38,7 +39,7 @@
     width: 100%;
     max-width: 300px;
     height: fit-content;
-   
+    margin-bottom: 15px;
 }
 
 .inputBoxes .inputBox input,select{
@@ -74,6 +75,7 @@
   font-size: 0.95rem;
   transition: all ease 0.3s;
   box-shadow: -3px 3px 3px rgb(99, 102, 241,0.5);
+  
 }
 
 .addExpense-btn:hover{

@@ -38,7 +38,7 @@ import { addExpense} from './addExpenses.js';
            const objData = JSON.parse(localStorageData);
        userData[0].name = objData.name
        userData[0].budget = objData.budget
-       userData[0].totalSpent = objData.totalSpent
+       userData[0].totalSpent = objData.totalSpent 
        userData[0].remnant =  objData.remnant
             renderCard(mainContent,userData[0].totalSpent,userData[0].budget,userData[0].remnant)
             addExpense(mainContent)
