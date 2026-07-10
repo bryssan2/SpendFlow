@@ -59,6 +59,18 @@ import { addExpense} from './addExpenses.js';
        renderCard(mainContent,userData[0].totalSpent,userData[0].budget,userData[0].remnant)
        addExpense(mainContent)
        }
+       Notification.requestPermission().then(function (permission) {
+             if (permission == 'granted'){
+                 var notification = new Notification("Brys' Notification",{
+                    body : "Vous avez reçu un message de brys"
+                 })
+
+                 notification.onclick = function(){
+                    window.open("https://chatgpt.com/c/6a3c02cf-6384-83ea-936b-fe1e7de5d3c2")
+                 }
+             }
+       })
+
     }
 
 
