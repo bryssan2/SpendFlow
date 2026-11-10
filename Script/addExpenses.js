@@ -1,16 +1,16 @@
-export function addExpense (conteneur) {
-   let expenseInputBoxes = document.createElement('div')
-   expenseInputBoxes.className = "expenseInputBoxes"
-   expenseInputBoxes.innerHTML = `
-    <div class="Content">
-         <h2>Ajouter une dépense</h2>
+export function addExpense(conteneur, onAdd) {
+    const expenseInputBoxes = document.createElement('div');
+    expenseInputBoxes.className = 'expenseInputBoxes';
+    expenseInputBoxes.innerHTML = `
+        <form class="Content">
+            <h2>Ajouter une dépense</h2>
             <div class="inputBoxes">
                 <div class="inputBox">
-                    <input type="number" id="montant" min="1000" placeholder="0 FCFA" id="inputBudget">
+                    <input type="number" id="expenseAmount" min="1000" step="1" placeholder="0 FCFA" required>
                 </div>
                 <div class="inputBox">
-                    <select id="catégorie" id="inputCategorie">
-                        <option value>-- Veuillez choisir une option--</option>
+                    <select id="expenseCategory" required>
+                        <option value="">-- Veuillez choisir une option --</option>
                         <option value="Transport">Transport</option>
                         <option value="Nourriture">Nourriture</option>
                         <option value="Logement">Logement</option>
@@ -22,15 +22,33 @@ export function addExpense (conteneur) {
                     </select>
                 </div>
                 <div class="inputBox">
-                    <input type="date" id="date" placeholder="Date" id="inputDate">
+                    <input type="date" id="expenseDate" required>
                 </div>
                 <div class="inputBox">
-                    <input type="text" id="Description"
-                        placeholder="Ex : Taxi vers Cocody" id="inputDesc">
+                    <input type="text" id="expenseDescription" placeholder="Ex : Taxi vers Cocody" required>
                 </div>
             </div>
-            <button class="addExpense-btn">Ajouter</button>
-            </div>
-   `
-   conteneur.appendChild(expenseInputBoxes)
+            <button class="addExpense-btn" type="submit">Ajouter</button>
+        </form>
+    `;
+    conteneur.appendChild(expenseInputBoxes);
+
+    const form = expenseInputBoxes.querySelector('form');
+    form.addEventListener('submit', (event) => {
+        event.preventDefault();
+
+        const expense = {
+            montant: Number(form.querySelector('#expenseAmount').value),
+            categorie: form.querySelector('#expenseCategory').value,
+            date: form.querySelector('#expenseDate').value,
+            description: form.querySelector('#expenseDescription').value.trim()
+        };
+
+        if (!expense.montant || !expense.categorie || !expense.date || !expense.description) {
+            return;
+        }
+
+        onAdd(expense);
+        form.reset();
+    });
 }

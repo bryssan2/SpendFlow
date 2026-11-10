@@ -1,1 +1,0 @@
-import validAccueilData from './validation.js'

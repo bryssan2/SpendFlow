@@ -1,11 +1,10 @@
-export function saveInLocalStorage (a,b,c){
-     let data = {
-        name : a,
-        budget : b,
-        totalSpent : c,
-        remnant : b - c
-     }
-     localStorage.setItem('userData',JSON.stringify(data))
-     
+export function saveInLocalStorage(name, budget, totalSpent, expenses = []) {
+    const data = {
+        name,
+        budget: Number(budget),
+        totalSpent: Number(totalSpent),
+        remnant: Number(budget) - Number(totalSpent),
+        expenses
+    };
+    localStorage.setItem('userData', JSON.stringify(data));
 }
-

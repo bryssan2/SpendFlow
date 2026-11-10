@@ -6,77 +6,72 @@ import {saveInLocalStorage} from './localStorage.js'
 import {greeting } from './greeting.js'
 import { renderCard} from './renderCards.js';
 import { addExpense} from './addExpenses.js';
+import { renderExpensesList } from './renderExpensesList.js';
 
+const mainContent = document.getElementById('mainContent');
 
+function renderDashboard() {
+    const currentUser = userData[0];
+    mainContent.innerHTML = '';
+    greeting(currentUser.name, mainContent);
+    renderCard(mainContent, currentUser.totalSpent, currentUser.budget, currentUser.remnant);
+    addExpense(mainContent, (expense) => {
+        currentUser.expenses.push(expense);
+        currentUser.totalSpent = currentUser.expenses.reduce(
+            (total, item) => total + Number(item.montant),
+            0
+        );
+        currentUser.remnant = Number(currentUser.budget) - currentUser.totalSpent;
+        saveInLocalStorage(
+            currentUser.name,
+            currentUser.budget,
+            currentUser.totalSpent,
+            currentUser.expenses
+        );
 
-  let mainContent = document.getElementById('mainContent')
-    
-    if(localStorage.length == 0){
-        mainContent.classList.add('load')
-        modalNameBudget(mainContent)
-        let accueilSaveBtn = document.getElementById('accueilSaveBtn')
-        let inputName = document.getElementById('inputName')
-        let inputBudget = document.getElementById('inputBudget')
-   
+        const cardAmounts = mainContent.querySelectorAll('.cardsConteneur .montant');
+        cardAmounts[0].textContent = `${currentUser.totalSpent.toLocaleString('fr-FR')} FCFA`;
+        cardAmounts[2].textContent = `${currentUser.remnant.toLocaleString('fr-FR')} FCFA`;
+        renderExpensesList(currentUser.expenses, mainContent);
+    });
+    renderExpensesList(currentUser.expenses, mainContent);
+}
+
+const localStorageData = localStorage.getItem('userData');
+if (localStorageData) {
+    const savedUserData = JSON.parse(localStorageData);
+    userData[0] = {
+        ...userData[0],
+        ...savedUserData,
+        expenses: Array.isArray(savedUserData.expenses) ? savedUserData.expenses : []
+    };
+    renderDashboard();
+} else {
+    mainContent.classList.add('load');
+    modalNameBudget(mainContent);
+
+    const accueilSaveBtn = document.getElementById('accueilSaveBtn');
+    const inputName = document.getElementById('inputName');
+    const inputBudget = document.getElementById('inputBudget');
 
     accueilSaveBtn.addEventListener('click', () => {
+        if (!validAccueilData(inputName, inputBudget)) {
+            popUp();
+            return;
+        }
 
-       if(!validAccueilData(inputName,inputBudget)){
-          popUp()
-          return null
-       } else{
-            userData[0].name = inputName.value.trim()
-            userData[0].budget = inputBudget.value.trim()
-            saveInLocalStorage(userData[0].name,userData[0].budget,userData[0].totalSpent,userData[0].remnant)
-            inputName.value = ''
-            inputBudget.value = ''
-            mainContent.classList.remove('load')
-            mainContent.innerHTML = ''
-            greeting(userData[0].name,mainContent)
-            const localStorageData = localStorage.getItem('userData')
-       if(localStorageData){
-           const objData = JSON.parse(localStorageData);
-       userData[0].name = objData.name
-       userData[0].budget = objData.budget
-       userData[0].totalSpent = objData.totalSpent 
-       userData[0].remnant =  objData.remnant
-            renderCard(mainContent,userData[0].totalSpent,userData[0].budget,userData[0].remnant)
-            addExpense(mainContent)
-       }
-       }
-    })
-
-    }else if(localStorage.length > 0 ){
-       const localStorageData = localStorage.getItem('userData')
-       if(localStorageData){
-           const objData = JSON.parse(localStorageData);
-       userData[0].name = objData.name
-       userData[0].budget = objData.budget
-       userData[0].totalSpent = objData.totalSpent
-       userData[0].remnant =  objData.remnant
-       mainContent.innerHTML = '';
-       greeting(userData[0].name,mainContent);
-       renderCard(mainContent,userData[0].totalSpent,userData[0].budget,userData[0].remnant)
-       addExpense(mainContent)
-       }
-       Notification.requestPermission().then(function (permission) {
-             if (permission == 'granted'){
-                 var notification = new Notification("Brys' Notification",{
-                    body : "Vous avez reçu un message de brys"
-                 })
-
-                 notification.onclick = function(){
-                    window.open("https://chatgpt.com/c/6a3c02cf-6384-83ea-936b-fe1e7de5d3c2")
-                 }
-             }
-       })
-
-    }
-
-
-
-
-
-
-
+        userData[0].name = inputName.value.trim();
+        userData[0].budget = Number(inputBudget.value);
+        inputName.value = '';
+        inputBudget.value = '';
+        mainContent.classList.remove('load');
+        saveInLocalStorage(
+            userData[0].name,
+            userData[0].budget,
+            userData[0].totalSpent,
+            userData[0].expenses
+        );
+        renderDashboard();
+    });
+}
 
