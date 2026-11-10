@@ -1,16 +1,19 @@
 .greetingSection{
-    margin: clamp(1rem,1.5rem,3rem);
-    margin-bottom: 60px;
+    width: min(1120px, calc(100% - 2.5rem));
+    margin: 2.5rem auto 1.75rem;
 }
 
 
 .greetingSection h1{
     color: var(--text-main);
-    font-size: clamp(1rem,2.2rem,4rem);
+    font-size: clamp(1.75rem, 3.2vw, 2.5rem);
+    letter-spacing: -0.045em;
 }
 
 .greetingSection h2{
     text-align: left;
     color: var(--text-secondary);
-    font-size: 1.2rem;
+    margin-top: 0.45rem;
+    font-size: 1rem;
+    font-weight: 400;
 }

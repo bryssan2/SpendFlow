@@ -1,17 +1,35 @@
 .expensesList {
-    width: min(90%, 900px);
-    margin: 0 auto 2rem;
-    padding: 1.25rem;
+    width: min(1120px, calc(100% - 2.5rem));
+    margin: 0 auto 3rem;
+    padding: clamp(1.25rem, 3vw, 2rem);
     color: var(--text-main);
     background: var(--bg-cards);
-    border: 1px solid rgba(225, 255, 255, 0.2);
-    border-radius: 6px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.12);
+    border: 1px solid var(--border-color);
+    border-radius: var(--radius-card);
+    box-shadow: var(--shadow-card);
 }
 
 .expensesList h2 {
-    margin-bottom: 1rem;
-    font-size: 1.2rem;
+    margin-top: 0.25rem;
+    font-size: 1.25rem;
+}
+
+.expensesListHeader{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+    margin-bottom: 1.25rem;
+}
+
+.expenseCount,
+.chartPeriod{
+    padding: 0.4rem 0.75rem;
+    color: var(--text-secondary);
+    background: #f3f3fa;
+    border-radius: 999px;
+    font-size: 0.78rem;
+    font-weight: 600;
 }
 
 .expensesList ul {
@@ -21,38 +39,99 @@
 
 .expenseItem {
     display: grid;
-    grid-template-columns: minmax(0, 1fr) auto;
-    gap: 0.35rem 1rem;
+    grid-template-columns: minmax(0, 1fr) auto auto;
+    align-items: center;
+    gap: 0.8rem 1.25rem;
     padding: 1rem;
-    border: 1px solid rgba(128, 128, 128, 0.2);
-    border-radius: 5px;
+    border: 1px solid var(--border-color);
+    border-radius: 13px;
+    transition: border-color 180ms ease, background 180ms ease;
+}
+
+.expenseItem:hover{
+    background: #fcfcff;
+    border-color: #d8d5ff;
 }
 
 .expenseDescription {
     font-weight: 600;
+    overflow-wrap: anywhere;
 }
 
 .expenseAmount {
-    color: var(--color-primary);
+    color: var(--text-main);
     font-weight: 700;
+    white-space: nowrap;
 }
 
 .expenseDetails {
-    grid-column: 1 / -1;
+    margin-top: 0.3rem;
     color: var(--text-secondary);
     font-size: 0.9rem;
 }
 
+.expenseActions{
+    display: flex;
+    gap: 0.45rem;
+}
+
+.expenseAction-btn{
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.4rem;
+    padding: 0.55rem 0.7rem;
+    color: var(--color-primary);
+    background: #f0efff;
+    border-radius: 9px;
+    cursor: pointer;
+    font-size: 0.78rem;
+    font-weight: 600;
+    transition: background 160ms ease, transform 160ms ease;
+}
+
+.expenseAction-btn:hover{
+    background: #e4e2ff;
+    transform: translateY(-1px);
+}
+
+.deleteExpense-btn{
+    color: var(--color-danger);
+    background: #fff0f2;
+}
+
+.deleteExpense-btn:hover{
+    background: #ffe2e7;
+}
+
 .emptyExpenses {
     color: var(--text-secondary);
+    padding: 1.4rem;
+    text-align: center;
+    background: #fafaff;
+    border: 1px dashed var(--border-color);
+    border-radius: 12px;
 }
 
 @media (max-width: 480px) {
     .expenseItem {
         grid-template-columns: 1fr;
+        gap: 0.55rem;
     }
 
     .expenseAmount {
-        grid-row: 2;
+        text-align: left;
+    }
+
+    .expenseActions{
+        margin-top: 0.35rem;
+    }
+
+    .expensesListHeader{
+        align-items: flex-start;
+    }
+
+    .expenseCount{
+        flex-shrink: 0;
     }
 }

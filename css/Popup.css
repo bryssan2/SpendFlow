@@ -1,13 +1,13 @@
 .popUp{
-width: 90%;
-max-width: 400px;
-background-color: #ffff;
-padding: 30px;
-border-radius: 15px;
-text-align: center;
-box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
-animation: popIn 0.3s ease-in-out;
-position: relative;
+    width: min(90%, 420px);
+    padding: 2rem;
+    border: 1px solid var(--border-color);
+    border-radius: var(--radius-card);
+    background-color: #fff;
+    text-align: center;
+    box-shadow: 0 20px 60px rgba(20, 22, 52, 0.2);
+    animation: popIn 0.3s ease-in-out;
+    position: relative;
 }
 
 .popUpErrorOverlay{
@@ -16,7 +16,9 @@ position: relative;
     left: 0;
     width: 100vw;
     height: 100vh;
-    background-color:rgba(0, 0, 0, 0.5);
+    padding: 1rem;
+    background-color: rgba(23, 26, 43, 0.5);
+    backdrop-filter: blur(4px);
     display: flex;
     align-items: center;
     justify-content: center;
@@ -24,12 +26,14 @@ position: relative;
 }
 
 .popUp h1{
-    font-size: 1.7rem;
+    font-size: 1.35rem;
     color: var(--text-main);
 }
 
 .popUp h4{
-    color: red;
+    margin-top: 0.65rem;
+    color: var(--color-danger);
+    font-weight: 500;
 }
 
 @keyframes popIn {

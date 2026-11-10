@@ -7,6 +7,7 @@ import {greeting } from './greeting.js'
 import { renderCard} from './renderCards.js';
 import { addExpense} from './addExpenses.js';
 import { renderExpensesList } from './renderExpensesList.js';
+import { renderMonthlyChart } from './charts.js';
 
 const mainContent = document.getElementById('mainContent');
 
@@ -15,10 +16,11 @@ function renderDashboard() {
     mainContent.innerHTML = '';
     greeting(currentUser.name, mainContent);
     renderCard(mainContent, currentUser.totalSpent, currentUser.budget, currentUser.remnant);
-    addExpense(mainContent, (expense) => {
-        currentUser.expenses.push(expense);
+    renderMonthlyChart(currentUser.expenses, mainContent);
+
+    function refreshExpenses() {
         currentUser.totalSpent = currentUser.expenses.reduce(
-            (total, item) => total + Number(item.montant),
+            (total, expense) => total + Number(expense.montant),
             0
         );
         currentUser.remnant = Number(currentUser.budget) - currentUser.totalSpent;
@@ -32,9 +34,31 @@ function renderDashboard() {
         const cardAmounts = mainContent.querySelectorAll('.cardsConteneur .montant');
         cardAmounts[0].textContent = `${currentUser.totalSpent.toLocaleString('fr-FR')} FCFA`;
         cardAmounts[2].textContent = `${currentUser.remnant.toLocaleString('fr-FR')} FCFA`;
-        renderExpensesList(currentUser.expenses, mainContent);
+        renderMonthlyChart(currentUser.expenses, mainContent);
+        renderExpensesList(currentUser.expenses, mainContent, expenseListActions);
+    }
+
+    const expenseForm = addExpense(mainContent, (expense, editingIndex) => {
+        if (editingIndex === null) {
+            currentUser.expenses.push(expense);
+        } else {
+            currentUser.expenses[editingIndex] = expense;
+        }
+        refreshExpenses();
     });
-    renderExpensesList(currentUser.expenses, mainContent);
+
+    const expenseListActions = {
+        onEdit(expense, index) {
+            expenseForm.edit(expense, index);
+        },
+        onDelete(index) {
+            currentUser.expenses.splice(index, 1);
+            expenseForm.cancelEdit();
+            refreshExpenses();
+        }
+    };
+
+    renderExpensesList(currentUser.expenses, mainContent, expenseListActions);
 }
 
 const localStorageData = localStorage.getItem('userData');
@@ -74,4 +98,3 @@ if (localStorageData) {
         renderDashboard();
     });
 }
-

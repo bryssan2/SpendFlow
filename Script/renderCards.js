@@ -1,36 +1,36 @@
-export function renderCard (conteneur,totaldépensé,budget,restant){
-   let cardsConteneur = document.createElement('div')
-   cardsConteneur.className = "cardsConteneur"
-   cardsConteneur.innerHTML = `
-     <div class="card">
-                    <i class='fas fa-money-bill-wave'></i>
-                    <div class="info">
-                        <div class="card-label">
-                            Total dépensé
-                        </div>
-                        <div class="montant">${totaldépensé} FCFA</div>
-                    </div>
-                </div>
-                <div class="card">
-                    <i class='fas fa-chart-pie'></i>
-                    <div class="info">
-                        <div class="card-label">
-                              Budget mensuel
-                        </div>
-                        <div class="montant">${budget} FCFA</div>
-                    </div>
-                </div>
-                <div class="card">
-                    <i class='fas fa-circle-check'></i>
-                    <div class="info">
-                        <div class="card-label">
-                           Reste disponible
-                        </div>
-                        <div class="montant">${restant} FCFA</div>
-                    </div>
-                </div>
-   `
+export function renderCard(conteneur, totalDepense, budget, restant) {
+    const cardsContainer = document.createElement('div');
+    cardsContainer.className = 'cardsConteneur';
 
-   conteneur.appendChild(cardsConteneur)
+    const cards = [
+        { icon: 'fa-money-bill-wave', label: 'Total dépensé', amount: totalDepense },
+        { icon: 'fa-chart-pie', label: 'Budget mensuel', amount: budget },
+        { icon: 'fa-circle-check', label: 'Reste disponible', amount: restant }
+    ];
 
+    cards.forEach(({ icon, label, amount }) => {
+        const card = document.createElement('div');
+        card.className = 'card';
+
+        const iconElement = document.createElement('i');
+        iconElement.className = `fas ${icon}`;
+        iconElement.setAttribute('aria-hidden', 'true');
+
+        const info = document.createElement('div');
+        info.className = 'info';
+
+        const cardLabel = document.createElement('div');
+        cardLabel.className = 'card-label';
+        cardLabel.textContent = label;
+
+        const cardAmount = document.createElement('div');
+        cardAmount.className = 'montant';
+        cardAmount.textContent = `${Number(amount).toLocaleString('fr-FR')} FCFA`;
+
+        info.append(cardLabel, cardAmount);
+        card.append(iconElement, info);
+        cardsContainer.appendChild(card);
+    });
+
+    conteneur.appendChild(cardsContainer);
 }

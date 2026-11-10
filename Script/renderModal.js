@@ -8,8 +8,8 @@ export function modalNameBudget (conteneur) {
                         s'il vous plaît !</h2>
                 </div>
                <div class="inputBoxes">
-            <div class="inputBox"><input type="text" id="inputName"> <label for="inputName"">Votre pénom</label></div>
-            <div class="inputBox"><input type="number" id="inputBudget" min="1000"> <label for="inputNumber">Votre montant</label></div>
+            <div class="inputBox"><input type="text" id="inputName" placeholder=" "> <label for="inputName">Votre prénom</label></div>
+            <div class="inputBox"><input type="number" id="inputBudget" min="1000" placeholder=" "> <label for="inputBudget">Votre montant</label></div>
         </div>
                 <button class="accueil_save_btn" id='accueilSaveBtn'>Enregistrer</button>
             </div>

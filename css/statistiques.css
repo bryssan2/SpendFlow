@@ -1,0 +1,38 @@
+.monthlyChart{
+    width: min(1120px, calc(100% - 2.5rem));
+    margin: 0 auto 1.5rem;
+    padding: clamp(1.25rem, 3vw, 2rem);
+    background: var(--bg-cards);
+    border: 1px solid var(--border-color);
+    border-radius: var(--radius-card);
+    box-shadow: var(--shadow-card);
+}
+
+.chartHeader{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+    margin-bottom: 1rem;
+}
+
+.chartHeader h2{
+    margin-top: 0.25rem;
+    font-size: 1.25rem;
+}
+
+.chartCanvasWrap{
+    width: 100%;
+    min-height: 260px;
+}
+
+.chartCanvasWrap canvas{
+    display: block;
+    width: 100%;
+}
+
+@media (max-width: 480px){
+    .chartHeader{
+        align-items: flex-start;
+    }
+}

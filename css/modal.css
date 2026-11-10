@@ -1,20 +1,22 @@
 main{
    width: 100%;
-   height: 100vh;
+   min-height: calc(100vh - 4.25rem);
 }
 
 main.load{
     display: flex;
     align-items: center;
     justify-content: center;
+    padding: 2rem 1rem;
 }
 
 .accueil_card{
-    width:min(90%,600px);
-    height:fit-content;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
-    border-radius: 8px;
-    background-color: #ffff;
+    width: min(100%, 560px);
+    height: fit-content;
+    box-shadow: var(--shadow-card);
+    border: 1px solid var(--border-color);
+    border-radius: var(--radius-card);
+    background-color: var(--bg-cards);
     animation: FadeIn 0.3s ease-in;
 }
 
@@ -36,8 +38,8 @@ main.load{
     align-items: center;
     flex-direction: column;
     justify-content: center;
-    padding: 3rem 1rem;
-    gap: 1.5rem;
+    padding: clamp(2rem, 6vw, 3.5rem) clamp(1.25rem, 5vw, 3rem);
+    gap: 1.25rem;
 }
 
 .heading{
@@ -47,78 +49,92 @@ main.load{
 
 .heading h1{
     color: var(--text-main);
+    font-size: clamp(1.8rem, 5vw, 2.4rem);
+    letter-spacing: -0.04em;
 }
 
 .heading h2{
+    margin-top: 0.5rem;
     color: var(--text-secondary);
-    font-size: 1.2rem;
+    font-size: 1rem;
+    font-weight: 400;
 }
 
 .inputBoxes{
-    display: flex;
-    gap: 5px;
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    width: 100%;
+    gap: 0.8rem;
 }
 
 .inputBox{
     position: relative;
-    height: 34px;
-    width:clamp(2rem,8rem,10rem);
+    min-width: 0;
+    height: 46px;
+    width: 100%;
 }
 
-input{
+.content input{
     position: relative;
     width: 100%;
-    height:100%;
-    border-radius: 5px;
-    padding: 10px;
+    height: 100%;
+    border-radius: 10px;
+    padding: 0.7rem 0.85rem;
     outline: none;
-    font-size: 0.75rem;
+    font-size: 0.9rem;
     color: var(--text-main);
-    border: 1px solid #6b6b6b;
+    border: 1px solid var(--border-color);
+    background: #fbfbfe;
 }
 
-
-input:focus{
-   border: 2px solid var(--color-primary);
+.content input:focus{
+   border-color: var(--color-primary);
 }
 
-
-label{
+.content label{
     position: absolute;
-    left: 10px;
+    left: 0.75rem;
     top: 50%;
-     font-size: 0.9rem;
-     background-color: #ffff;
-     pointer-events: none;
-     color: #6b6b6b;
+    font-size: 0.85rem;
+    background-color: #fbfbfe;
+    padding: 0 0.2rem;
+    pointer-events: none;
+    color: var(--text-secondary);
     transform: translateY(-50%);
-    transition: all ease 0.3s;
+    transition: all ease 0.2s;
 }
 
-input:focus ~ label{
+.content input:focus ~ label,
+.content input:not(:placeholder-shown) ~ label{
     top: 0;
-    font-size: 0.75rem;
+    font-size: 0.72rem;
     color: var(--color-primary);
 }
 
 .accueil_save_btn{
-    color: #ffff;
-    background-color:var(--color-primary);
-    border-radius: 8px;
-    padding: 0.6rem 2rem;
+    color: #fff;
+    background-color: var(--color-primary);
+    border-radius: 10px;
+    padding: 0.8rem 2rem;
     font-weight: 600;
-    font-size: 1rem;
-    box-shadow: -3px 4px 1px rgba(99, 102, 241, 0.3);
+    font-size: 0.95rem;
+    box-shadow: 0 6px 15px rgba(81, 70, 229, 0.18);
     cursor: pointer;
-    transition: all ease 300ms;
+    transition: all ease 180ms;
 }
 
 .accueil_save_btn:hover{
   background-color: var(--color-secondary);
-  transform:scale(1.01);
+  transform: translateY(-1px);
 }
 
 .accueil_save_btn:active{
-    transform: scale(0.9);
+    transform: scale(0.98);
     box-shadow: none;
+}
+
+@media (max-width: 520px){
+    .content .inputBoxes{
+        grid-template-columns: 1fr;
+    }
 }
