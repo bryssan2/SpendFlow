@@ -9,7 +9,7 @@ export function addExpense(conteneur, onAdd) {
             </div>
             <div class="inputBoxes">
                 <div class="inputBox">
-                    <input type="number" id="expenseAmount" min="1000" step="1" placeholder="0 FCFA" required>
+                    <input type="number" id="expenseAmount" min="25" step="1" placeholder="0 FCFA" required>
                 </div>
                 <div class="inputBox">
                     <select id="expenseCategory" required>
